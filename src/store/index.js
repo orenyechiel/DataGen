@@ -37,7 +37,6 @@ export default createStore({
   },
   mutations: {
     deleteItem(state, payload) {
-      console.log(payload)
       const formated = state.shopingList.filter(i => i.id !== payload);
       state.shopingList = formated;
     },
