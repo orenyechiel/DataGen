@@ -7,10 +7,12 @@
           <SingleIngredient
             :id="item.id"
             :index="i + 1"
+            :is-checked="item.checked"
             :name="item.ingredient"
             :price="item.price"
           />
         </li>
+
         <li class="bottom-line">
           <div class="column">
             <span>Total:</span>
@@ -19,6 +21,7 @@
             <span>{{ getTotalPrice }} NIS </span>
           </div>
         </li>
+        
       </ol>
 
       <button class="add-new" @click="openModal">

@@ -1,5 +1,5 @@
 <template>
-  <div class="item" :class="{ checked: isCheck }">
+  <div class="item" :class="{ checked: isChecked }">
 
     <router-link :to="'/' + id" :class="column">
       <div class="column">
@@ -15,14 +15,16 @@
     <div class="column">
       <div class="item-details">
         <p class="price">{{ price }} NIS</p>
+
         <div class="actions">
-          <button @click="checkMe()">
+          <button @click="checkItem(index)">
             <img :src="Edit" alt="" />
           </button>
           <button @click="deleteItem(index)">
             <img :src="Trash" alt="" />
           </button>
         </div>
+
       </div>
     </div>
   </div>
@@ -35,23 +37,15 @@ import Trash from "@/assets/icons/trash.svg";
 
 export default {
   name: "SingleIngredient",
-  props: ["id","index", "name", "price"],
+  props: ["id","index", "name", "price", "isChecked"],
   setup() {
     return {
       Edit,
       Trash,
     };
   },
-  data() {
-    return {
-      isCheck: false,
-    };
-  },
   methods: {
-    ...mapMutations(["deleteItem"]),
-    checkMe() {
-      this.isCheck = !this.isCheck;
-    },
+    ...mapMutations(["deleteItem", "checkItem"]),
   },
 };
 </script>
